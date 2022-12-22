@@ -23,8 +23,9 @@
 var express = require('express'); // For web server
 var Axios = require('axios'); // A Promised base http client
 var bodyParser = require('body-parser'); // Receive JSON format
-require('dotenv').config();
+require('dotenv').config({ path: './config.env' });
 
+console.log('Procss env### : ', process.env);
 // Set up Express web server
 var app = express();
 app.use(bodyParser.json());
@@ -108,6 +109,8 @@ app.get('/api/forge/oauth/public', function (req, res) {
 
 // Buckey key and Policy Key for OSS
 const bucketKey = FORGE_CLIENT_ID.toLowerCase() + '_tutorial_bucket'; // Prefix with your ID so the bucket key is unique across all buckets on all other accounts
+// const bucketKey =
+//   '5b51mA7rGzun8PkgxkPXTD7kWL1K8vGm'.toLowerCase() + '_tutorial_bucket'; // Prefix with your ID so the bucket key is unique across all buckets on all other accounts
 const policyKey = 'transient'; // Expires in 24hr
 
 // Route /api/forge/datamanagement/bucket/create
